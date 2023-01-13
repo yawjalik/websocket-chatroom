@@ -1,0 +1,22 @@
+{
+  "name": "websocket-chatroom",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": "git+https://github.com/yawjalik/websocket-chatroom.git",
+  "keywords": [],
+  "author": "yawjalik <jalik2129@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yawjalik/websocket-chatroom/issues"
+  },
+  "homepage": "https://github.com/yawjalik/websocket-chatroom#readme",
+  "dependencies": {
+    "nodemon": "^2.0.20",
+    "ws": "^8.11.0"
+  }
+}

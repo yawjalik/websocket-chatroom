@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Websocket Chat</title>
+</head>
+
+<body>
+    <h1>Websocket Chat</h1>
+    <div>
+        <textarea name="msg-box" id="msg-box" cols="50" rows="15" readonly="true"></textarea>
+    </div>
+    <input id="text" type="text"/>
+
+    <button onclick=onSend()>Send</button>
+</body>
+
+<script>
+    function init() {
+        const ADDR = "ws://localhost:3456";
+        return new WebSocket(ADDR)
+    }
+
+    const ws = init()
+
+    ws.onopen = (event) => {
+        console.log("Connection opened")
+    }
+
+    ws.onmessage = (event) => {
+        if (document.getElementById("msg-box").value === "") {
+            document.getElementById("msg-box").value = event.data
+        } else {
+            document.getElementById("msg-box").value += "\n" + event.data
+        }
+    }
+
+    function onSend() {
+        if (ws.readyState !== ws.OPEN) {
+            console.error("Connection not opened")
+        } else {
+            const text = document.getElementById("text").value
+            ws.send(text)
+            document.getElementById("text").value = ""
+        }
+    }
+</script>
+
+</html>
